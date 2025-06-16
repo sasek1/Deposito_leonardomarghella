@@ -1,30 +1,32 @@
 #include <stdio.h>
 
-int main() {
-    int numero;
+int main(void) {
+    int giorno = 3;  // 1) Rappresentazione numerica del giorno (1=Lun, …, 7=Dom)
 
-    // Chiede all'utente di inserire un numero intero
-    printf("Inserisci un numero intero: ");
-    scanf("%d", &numero);
-
-    if (numero > 0 && numero % 2 == 0) {
-        // Numero positivo e pari
-        if (numero > 50) {
-            printf("molto grande!\n");
-        }
-    } else if (numero < 0 || numero > 100) {
-        // Numero negativo o maggiore di 100
-        if (numero % 5 == 0) {
-            printf("multiplo di 5!\n");
-        }
-    } else {
-        // Altrimenti
-        printf("Il numero non soddisfa nessuno delle condizioni precedenti\n");
-    }
-
-    // Se il numero è diverso da zero, stampa anche questo messaggio
-    if (numero != 0) {
-        printf("numero diverso da zero\n");
+    printf("Giorno %d: ", giorno);
+    switch (giorno) {
+        case 1:
+            printf("Lunedì\n");
+            break;            // 2) Esco dallo switch dopo aver eseguito case 1
+        case 2:
+            printf("Martedì\n");
+            break;
+        case 3:
+            printf("Mercoledì\n");
+            // 3) Nessun break: rientro voluto per mostrare metà settimana
+        case 4:
+            printf("Giovedì\n");
+            break;
+        case 5:
+            printf("Venerdì\n");
+            break;
+        case 6:
+        case 7:
+            // 4) Fall-through per raggruppare Sabato e Domenica
+            printf("Weekend!\n");
+            break;
+        default:
+            printf("Giorno non valido\n");
     }
 
     return 0;
